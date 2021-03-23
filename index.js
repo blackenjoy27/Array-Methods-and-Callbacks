@@ -9,28 +9,28 @@ let data = fifaData.filter(team=>team.Year === 2014);
 
 //(a) Home Team name for 2014 world cup final
 
-let homeTeam = data.map(team=>team['Home Team Name']);
-console.log(homeTeam);
+// let homeTeam = data.map(team=>team['Home Team Name']);
+// console.log(homeTeam);
 
-//(b) Away Team name for 2014 world cup final
+// //(b) Away Team name for 2014 world cup final
 
-let awayTeam = data.map(team=>team['Away Team Name']);
-console.log(awayTeam);
+// let awayTeam = data.map(team=>team['Away Team Name']);
+// console.log(awayTeam);
 
-//(c) Home Team goals for 2014 world cup final
+// //(c) Home Team goals for 2014 world cup final
 
-let homeGoals = data.map(team=>team['Home Team Goals']);
-console.log(homeGoals);
+// let homeGoals = data.map(team=>team['Home Team Goals']);
+// console.log(homeGoals);
 
-//(d) Away Team goals for 2014 world cup final
+// //(d) Away Team goals for 2014 world cup final
 
-let awayGoals = data.map(team=>team['Away Team Goals']);
-console.log(awayGoals)
+// let awayGoals = data.map(team=>team['Away Team Goals']);
+// console.log(awayGoals)
 
-//(e) Winner of 2014 world cup final */
+// //(e) Winner of 2014 world cup final */
 
-let winner = data.filter(team=>team.Stage ==='Final').filter(team=>team['Home Team Goals']>=team['Away Team Goals']);
-console.log(winner);
+// let winner = data.filter(team=>team.Stage ==='Final').filter(team=>team['Home Team Goals']>=team['Away Team Goals']);
+// console.log(winner);
 
 
 
@@ -92,7 +92,18 @@ Use the higher-order function getWinnersByYear to do the following:
 hint: the strings returned need to exactly match the string in step 4.
  */
 
-function getWinnersByYear(/* code here */) {
+function getWinnersByYear(arry,cb1,cb2) {
+    
+    //gets array of years into the finals
+    //get country name that won the cup
+    let arry1 = [];
+    let years = cb1(arry, getFinals);
+    let winners = cb2(arry,getWinners);
+    for(let i= 0;i<years.length;i++){
+        let str = `In ${years[i]}, ${winners[i]} won the world cup!`;
+        arry1.push(str);
+    }
+    return arry1;
     /* code here */
 }
 
@@ -108,7 +119,13 @@ Use the higher order function getAverageGoals to do the following:
  Example of invocation: getAverageGoals(getFinals(fifaData));
 */
 
-function getAverageGoals(/* code here */) {
+function getAverageGoals(data) {
+    
+    let score = data.reduce((home,match)=>home+=match['Home Team Goals'],0);
+    score = data.reduce((away,match)=>away+=match["Away Team Goals"], score);
+
+    return (score/data.length).toFixed(2);
+
    /* code here */
 }
 
