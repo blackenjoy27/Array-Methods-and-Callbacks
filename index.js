@@ -5,15 +5,35 @@ import { fifaData } from './fifa.js';
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 1: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀
 Practice accessing data by console.log-ing the following pieces of data note, you may want to filter the data first 😉*/
 
+let data = fifaData.filter(team=>team.Year === 2014);
+
 //(a) Home Team name for 2014 world cup final
+
+let homeTeam = data.map(team=>team['Home Team Name']);
+console.log(homeTeam);
 
 //(b) Away Team name for 2014 world cup final
 
+let awayTeam = data.map(team=>team['Away Team Name']);
+console.log(awayTeam);
+
 //(c) Home Team goals for 2014 world cup final
+
+let homeGoals = data.map(team=>team['Home Team Goals']);
+console.log(homeGoals);
 
 //(d) Away Team goals for 2014 world cup final
 
+let awayGoals = data.map(team=>team['Away Team Goals']);
+console.log(awayGoals)
+
 //(e) Winner of 2014 world cup final */
+
+let winner = data.filter(team=>team.Stage ==='Final').filter(team=>team['Home Team Goals']>=team['Away Team Goals']);
+console.log(winner);
+
+
+
 
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 2: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 
