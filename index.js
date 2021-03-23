@@ -45,7 +45,7 @@ hint - you should be looking at the stage key inside of the objects
 */
 
 function getFinals(data) {
-    return data.filter(team=>team.Stage==='Final');
+    return data.filter(match=>match.Stage==='Final');
 }
 
 
@@ -58,7 +58,7 @@ Use the higher-order function called getYears to do the following:
 
 function getYears(arry, cb) {
     let years = cb(arry);
-    return years.map(team=>team.Year);
+    return years.map(match=>match.Year);
     /* code here */
 }
 
@@ -71,8 +71,13 @@ Use the higher-order function getWinners to do the following:
 3. Determines the winner (home or away) of each `finals` game. 
 4. Returns the names of all winning countries in an array called `winners` */ 
 
-function getWinners(/* code here */) {
-    /* code here */
+function getWinners(arry,cb) {
+    let winners = cb(arry);
+    return winners.map(match=>{
+        if(match['Home Team Goals']>match['Away Team Goals']){
+            return match['Home Team Name'];
+        }return match['Away Team Name'];
+    });
 }
 
 
