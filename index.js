@@ -96,15 +96,12 @@ function getWinnersByYear(arry,cb1,cb2) {
     
     //gets array of years into the finals
     //get country name that won the cup
-    let arry1 = [];
+    
     let years = cb1(arry, getFinals);
-    let winners = cb2(arry,getWinners);
-    for(let i= 0;i<years.length;i++){
-        let str = `In ${years[i]}, ${winners[i]} won the world cup!`;
-        arry1.push(str);
-    }
-    return arry1;
-    /* code here */
+    let winners = cb2(arry,getFinals);
+    let index = 0;
+    years = years.map(match=>`In ${match}, ${winners[index++]} won the world cup!`);
+    return years;
 }
 
 
@@ -159,8 +156,8 @@ console.log(getCountryWins(fifaData,"FRA"));
 Write a function called getGoals() that accepts a parameter `data` and returns the team with the most goals score per appearance (average goals for) in the World Cup finals */
 
 function getGoals(data) {
+    data = getFinals(data);
     
-
     /* code here */
 
 }
